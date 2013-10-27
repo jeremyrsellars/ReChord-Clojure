@@ -3,36 +3,36 @@
 (def prefer-sharps first)
 (def prefer-flats last)
 
-(def offset-notes
+(def notes
   [
-    ["A"]
-    ["A#" "Bb"]
-    ["B"]
-    ["C"]
-    ["C#" "Db"]
-    ["D"]
-    ["D#" "Eb"]
-    ["E"]
-    ["F"]
-    ["F#" "Gb"]
-    ["G"]
-    ["G#" "Ab"]
+    ["A"]        ;; 0
+    ["A#" "Bb"]  ;; 1
+    ["B"]        ;; 2
+    ["C"]        ;; 3
+    ["C#" "Db"]  ;; 4
+    ["D"]        ;; 5
+    ["D#" "Eb"]  ;; 6
+    ["E"]        ;; 7
+    ["F"]        ;; 8
+    ["F#" "Gb"]  ;; 9
+    ["G"]        ;; 10
+    ["G#" "Ab"]  ;; 11
    ])
 
 (defn note-offset-pairs [i notes]
   (map #(cons % [i]) notes))
 
 (def note-offsets
-  (apply array-map (flatten (map-indexed note-offset-pairs offset-notes))))
+  (apply array-map (flatten (map-indexed note-offset-pairs notes))))
 
 (defn get-note-offset [note]
   (note-offsets note))
 
 (defn get-note [offset]
-  (first (offset-notes offset)))
+  (first (notes offset)))
 
 (defn get-notes [offset]
-  (offset-notes offset))
+  (notes offset))
 
 (defn normalize [n min max]
   (let [dif (+ max (- min) 1)]
@@ -58,6 +58,4 @@
         tnotes (transpose-note note offset)
         tnote (note-selector tnotes)]
     (clojure.string/join [tnote mods])))
-
-
 
