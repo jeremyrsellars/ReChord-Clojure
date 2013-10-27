@@ -1,7 +1,7 @@
 (ns rechord.core)
 
 (def note-offsets
-  {
+  (sorted-map
     "A" 0
     "A#" 1
     "Bb" 1
@@ -19,28 +19,31 @@
     "G" 10
     "G#" 11
     "Ab" 11
-   })
+   ))
 
 (def offset-notes
   [
-    "A"
-    "A#"
-    "B"
-    "C"
-    "C#"
-    "D"
-    "D#"
-    "E"
-    "F"
-    "F#"
-    "G"
-    "G#"
+    ["A"]
+    ["A#" "Bb"]
+    ["B"]
+    ["C"]
+    ["C#" "Db"]
+    ["D"]
+    ["D#" "Eb"]
+    ["E"]
+    ["F"]
+    ["F#" "Gb"]
+    ["G"]
+    ["G#" "Ab"]
    ])
 
 (defn get-note-offset [note]
   (note-offsets note))
 
 (defn get-note [offset]
+  (first (offset-notes offset)))
+
+(defn get-notes [offset]
   (offset-notes offset))
 
 (defn normalize [n min max]

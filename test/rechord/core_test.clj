@@ -65,4 +65,17 @@
   (testing "Normalize-note for 4 octives"
     (is (= (flatten (repeat 4 (range 12)))
            (map normalize-note (range -24 24))))))
+
+;; get-notes
+
+(deftest get-notes-0
+  (testing "get the first note"
+    (is (= '("A")
+           (get-notes 0)))))
+
+(deftest get-notes-1
+  (testing "get the first flat/sharp"
+    (is (= '("A#" "Bb")
+           (get-notes 1)))))
+
 
