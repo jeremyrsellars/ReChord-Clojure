@@ -78,4 +78,17 @@
     (is (= '("A#" "Bb")
            (get-notes 1)))))
 
+
+;; transpose
+
+(deftest transpose-A-0
+  (testing "transpose A 0"
+    (is (= ["A"]
+           (transpose "A" 0)))))
+
+(deftest transpose-A-1
+  (testing "transpose A 1"
+    (is (= ["A#" "Bb"]
+           (transpose "A" 1)))))
+
 

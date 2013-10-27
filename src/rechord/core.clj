@@ -56,4 +56,9 @@
 (defn normalize-note [n]
   (normalize n 0 11))
 
+(defn transpose [chord offset]
+   (-> chord
+    get-note-offset
+    (+ offset)
+    (get-notes)))
 
