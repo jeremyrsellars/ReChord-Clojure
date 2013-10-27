@@ -2,6 +2,31 @@
   (:require [clojure.test :refer :all]
             [rechord.core :refer :all]))
 
+;; note-offsets
+(deftest note-offsets-named-map
+  (testing "note-offsets are based on A=0, A#=1, etc."
+    (is (=
+  {
+    "A" 0
+    "A#" 1
+    "Bb" 1
+    "B" 2
+    "C" 3
+    "C#" 4
+    "Db" 4
+    "D" 5
+    "D#" 6
+    "Eb" 6
+    "E" 7
+    "F" 8
+    "F#" 9
+    "Gb" 9
+    "G" 10
+    "G#" 11
+    "Ab" 11
+   }
+   note-offsets))))
+
 
 ;; get-note-offset
 

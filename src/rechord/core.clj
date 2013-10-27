@@ -3,27 +3,6 @@
 (def prefer-sharps first)
 (def prefer-flats last)
 
-(def note-offsets
-  (sorted-map
-    "A" 0
-    "A#" 1
-    "Bb" 1
-    "B" 2
-    "C" 3
-    "C#" 4
-    "Db" 4
-    "D" 5
-    "D#" 6
-    "Eb" 6
-    "E" 7
-    "F" 8
-    "F#" 9
-    "Gb" 9
-    "G" 10
-    "G#" 11
-    "Ab" 11
-   ))
-
 (def offset-notes
   [
     ["A"]
@@ -39,6 +18,12 @@
     ["G"]
     ["G#" "Ab"]
    ])
+
+(defn note-offset-pairs [i notes]
+  (map #(cons % [i]) notes))
+
+(def note-offsets
+  (apply array-map (flatten (map-indexed note-offset-pairs offset-notes))))
 
 (defn get-note-offset [note]
   (note-offsets note))
