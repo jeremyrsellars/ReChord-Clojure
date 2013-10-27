@@ -33,6 +33,19 @@
   (testing "get-note-offset H is nil"
     (is (nil? (get-note-offset "H")))))
 
+
+;; get-note
+
+(deftest get-note-0
+  (testing "get the first note"
+    (is (= "A"
+           (get-note 0)))))
+
+(deftest get-note-all
+  (testing "get the normal notes"
+    (is (= ["A" "A#" "B" "C" "C#" "D" "D#" "E" "F" "F#" "G" "G#"]
+           (map get-note (range 12))))))
+
 ;; normalize-note
 
 (deftest normalize-note-0
@@ -52,5 +65,4 @@
   (testing "Normalize-note for 4 octives"
     (is (= (flatten (repeat 4 (range 12)))
            (map normalize-note (range -24 24))))))
-
 
