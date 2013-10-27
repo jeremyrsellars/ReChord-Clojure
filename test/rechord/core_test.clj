@@ -13,9 +13,25 @@
   (testing "get-note-offset A#"
     (is (= 1 (get-note-offset "A#")))))
 
+(deftest get-note-offset-Bb
+  (testing "get-note-offset Bb"
+    (is (= 1 (get-note-offset "Bb")))))
+
+(deftest get-note-offset-B
+  (testing "get-note-offset B"
+    (is (= 2 (get-note-offset "B")))))
+
+(deftest get-note-offset-G
+  (testing "get-note-offset G"
+    (is (= 10 (get-note-offset "G")))))
+
 (deftest get-note-offset-Ab
   (testing "get-note-offset Ab"
     (is (= 11 (get-note-offset "Ab")))))
+
+(deftest get-note-offset-H
+  (testing "get-note-offset H is nil"
+    (is (nil? (get-note-offset "H")))))
 
 ;; normalize-note
 
