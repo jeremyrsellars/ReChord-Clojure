@@ -83,12 +83,41 @@
 
 (deftest transpose-A-0
   (testing "transpose A 0"
-    (is (= ["A"]
-           (transpose "A" 0)))))
+    (is (= "A"
+           (transpose "A" 0 prefer-sharps)))))
 
-(deftest transpose-A-1
+(deftest transpose-A-1-sharp
   (testing "transpose A 1"
-    (is (= ["A#" "Bb"]
-           (transpose "A" 1)))))
+    (is (= "A#"
+           (transpose "A" 1 prefer-sharps)))))
 
+(deftest transpose-A-1-flat
+  (testing "transpose A 1"
+    (is (= "Bb"
+           (transpose "A" 1 prefer-flats)))))
+
+(deftest transpose-Am-1
+  (testing "transpose A 1"
+    (is (= "A#m"
+           (transpose "Am" 1 prefer-sharps)))))
+
+(deftest transpose-AbMaj7--1
+  (testing "transpose AbMaj7 -1"
+    (is (= "GMaj7"
+           (transpose "AbMaj7" -1 prefer-sharps)))))
+
+(deftest transpose-AMaj7--1-sharp
+  (testing "transpose AMaj7 -1"
+    (is (= "G#Maj7"
+           (transpose "AMaj7" -1 prefer-sharps)))))
+
+(deftest transpose-AMaj7--1-flat
+  (testing "transpose AMaj7 -1"
+    (is (= "AbMaj7"
+           (transpose "AMaj7" -1 prefer-flats)))))
+
+(deftest transpose-F#m7-3-flat
+  (testing "transpose F#m7 3"
+    (is (= "Am7"
+           (transpose "F#m7" 3 prefer-flats)))))
 

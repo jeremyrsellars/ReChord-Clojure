@@ -1,5 +1,8 @@
 (ns rechord.core)
 
+(def prefer-sharps first)
+(def prefer-flats last)
+
 (def note-offsets
   (sorted-map
     "A" 0
@@ -56,9 +59,20 @@
 (defn normalize-note [n]
   (normalize n 0 11))
 
-(defn transpose [chord offset]
-   (-> chord
+(defn transpose-note [note offset]
+   (-> note
     get-note-offset
     (+ offset)
-    (get-notes)))
+    normalize-note
+    get-notes))
+
+(defn transpose [chord offset note-selector]
+  (let [parts (rest (re-matches #"^([A-G][b#]?)(.*)" chord))
+        note (first parts)
+        mods (second parts)
+        tnotes (transpose-note note offset)
+        tnote (note-selector tnotes)]
+    (clojure.string/join [tnote mods])))
+
+
 
