@@ -23,4 +23,21 @@
     (is (= :lyric
       (get-line-type "A birthday song")))))
 
+
+;; get-tagged-lines
+(deftest empty-is-one-separator
+  (testing "empty is [:separator]"
+    (is (= [[:separator ""]]
+           (get-tagged-lines "")
+         ))))
+(deftest birthday-song
+  (testing "empty is [:separator]"
+    (is (= [
+[:separator ""]
+[:chord "A            B        C"]
+[:lyric "This is your birthday song"]]
+           (get-tagged-lines
+"
+A            B        C
+This is your birthday song")))))
 
