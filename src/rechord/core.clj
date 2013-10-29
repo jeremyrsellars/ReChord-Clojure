@@ -64,8 +64,4 @@
      line
      #"[A-G][b#]?(Maj|MAJ|maj|min|m|M|[0-9])*"
      #(transpose (first %) offset note-selector)))
-
-
-(clojure.string/replace " Amaj7 " #"[A-G][b#]?(Maj|MAJ|maj|min|m|M|[0-9])*"
-                        (fn [m] (transpose (first m) 2 prefer-flats)))
 
