@@ -145,4 +145,46 @@
   (testing "transpose F#m7 3"
     (is (= "Am7"
            (transpose "F#m7" 3 prefer-flats)))))
+
+
+;; replace-chords
+(deftest replace-chords-empty-0-sharps
+  (testing "empty is empty"
+    (is (= ""
+           (replace-chords "" 0 prefer-sharps)))))
+
+(deftest replace-chords-A-0-sharps
+  (testing "Identity for A"
+    (is (= "A"
+           (replace-chords "A" 0 prefer-sharps)))))
+
+(deftest replace-chords-A-2-sharps
+  (testing "'A' + 2 is 'B'"
+    (is (= "B"
+           (replace-chords "A" 2 prefer-sharps)))))
+
+(deftest replace-chords-_A_-2-sharps
+  (testing "' A ' + 2 is ' B '"
+    (is (= " B "
+           (replace-chords " A " 2 prefer-sharps)))))
+
+(deftest replace-chords-_A__GMaj7-2-sharps
+  (testing "' A  Am' + 2 is ' B  BMaj'"
+    (is (= " B  BMaj7"
+           (replace-chords " A  AMaj7" 2 prefer-sharps)))))
+
+(deftest replace-chords-_A__GMaj7__-2-sharps
+  (testing "' A  GMaj7  ' + 2 is ' B  AMaj7  '"
+    (is (= " B  AMaj7  "
+           (replace-chords " A  GMaj7  " 2 prefer-sharps)))))
+
+(deftest replace-chords-_A_-4-sharps
+  (testing "' Am ' + 4 is ' C#m '"
+    (is (= " C#m "
+           (replace-chords " Am " 4 prefer-sharps)))))
+
+(deftest replace-chords-_A_-4-flats
+  (testing "' Am ' + 4 is ' Dbm '"
+    (is (= " Dbm "
+           (replace-chords " Am " 4 prefer-flats)))))
 

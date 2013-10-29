@@ -28,12 +28,6 @@
 (defn get-note-offset [note]
   (note-offsets note))
 
-(defn get-note [offset]
-  (first (notes offset)))
-
-(defn get-notes [offset]
-  (notes offset))
-
 (defn normalize [n min max]
   (let [dif (+ max (- min) 1)]
     (cond
@@ -43,6 +37,12 @@
 
 (defn normalize-note [n]
   (normalize n 0 11))
+
+(defn get-note [offset]
+  (first (notes (normalize-note offset))))
+
+(defn get-notes [offset]
+  (notes (normalize-note offset)))
 
 (defn transpose-note [note offset]
    (-> note
@@ -58,4 +58,14 @@
         tnotes (transpose-note note offset)
         tnote (note-selector tnotes)]
     (clojure.string/join [tnote mods])))
+
+(defn replace-chords [line offset note-selector]
+  (clojure.string/replace
+     line
+     #"[A-G][b#]?(Maj|MAJ|maj|min|m|M|[0-9])*"
+     #(transpose (first %) offset note-selector)))
+
+
+(clojure.string/replace " Amaj7 " #"[A-G][b#]?(Maj|MAJ|maj|min|m|M|[0-9])*"
+                        (fn [m] (transpose (first m) 2 prefer-flats)))
 
