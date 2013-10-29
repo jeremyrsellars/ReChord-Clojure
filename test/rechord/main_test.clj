@@ -24,4 +24,17 @@
     (is (= "Ab Bb B"
            (rechord-line [:chord "A B C"] -1 prefer-flats)))))
 
+
+;; rechord
+(deftest rechord-birthday-song
+  (testing "rechord birthday song"
+    (is (= ["A birthday song"
+            ""
+            "G     A    G   C  G"
+            "Happy birthday to you"]
+           (rechord [
+             [:lyric     "A birthday song"]
+             [:separator ""]
+             [:chord     "A     B    A   D  A"]
+             [:lyric     "Happy birthday to you"]] -2 prefer-sharps)))))
 
