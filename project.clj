@@ -14,7 +14,8 @@
       :crossover-path "src/rechord",
       :compiler {
         :output-to "resources/public/rechord.js"
-        :optimizations :whitespace
+        :optimizations :simple
         :pretty-print true
+        :target :nodejs
       }
     }]})

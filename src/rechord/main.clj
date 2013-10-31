@@ -1,6 +1,7 @@
 (ns rechord.main
   (:require [rechord.core :as core]
-            [rechord.linereader :as linereader]))
+            [rechord.linereader :as linereader]
+            [clojure.string :as string]))
 
 (defn rechord-tagged-line [tagged-line offset note-selector]
   (let [tag (first tagged-line)
@@ -16,4 +17,4 @@
 
 
 (defn rechord [text offset note-selector]
-  (clojure.string/join "\n" (rechord-tagged-lines (linereader/get-tagged-lines text) offset note-selector)))
+  (string/join "\n" (rechord-tagged-lines (linereader/get-tagged-lines text) offset note-selector)))
