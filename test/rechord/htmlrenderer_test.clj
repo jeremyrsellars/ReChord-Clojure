@@ -12,6 +12,8 @@
            (render-chord-line " ")))
     (is (= "<span>A</span>"
            (render-chord-line "A")))
+    (is (= "<span>C#m7</span>"
+           (render-chord-line "C#m7")))
     ))
 
 
