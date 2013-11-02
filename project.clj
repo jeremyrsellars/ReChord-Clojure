@@ -6,7 +6,7 @@
   :plugins [[lein-cljsbuild "0.3.4"]]
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/clojurescript "0.0-1934"]]
-  :source-paths ["src/rechord"],
+  :source-paths ["src"],
   :cljsbuild {
     :crossovers [rechord.core rechord.linereader rechord.main],
     :builds [{
