@@ -3,28 +3,18 @@
             [rechord.core :refer :all]
             [rechord.htmlrenderer :refer :all]))
 
-;; render-chord-line
-(deftest render-chord-line-html
-  (testing "render-chord-line [text]"
-    (is (= ""
-           (render-chord-line "")))
-    (is (= "&nbsp;"
-           (render-chord-line " ")))
-    (is (= "<span>A</span>"
-           (render-chord-line "A")))
-    (is (= "<span>C#m7</span>"
-           (render-chord-line "C#m7")))
-    ))
-
-
-;; render-lyric-line
-(deftest render-lyric-line-html
-  (testing "render-lyric-line [text]"
-    (is (= ""
-           (render-lyric-line "")))
-    (is (= "&nbsp;"
-           (render-lyric-line " ")))
-    (is (= "&nbsp;A&nbsp;"
-           (render-lyric-line " A ")))
+;; render-tagged-lines
+(deftest render-tagged-lines-test
+  (testing "render-tagged-lines produces html"
+    (is (= "<h1>title</h1>\r\n<h3>chorus</h3>\r\n<span class='chord'>A B C</span><br/>\r\n<span class='lyric'>Lyrics</span><br/>\r\n<br/>\r\n"
+           (render-tagged-lines
+            [
+             [:lyric "title"]
+             [:lyric "chorus"]
+             [:chord "A B C"]
+             [:lyric "Lyrics"]
+             [:separator ""]
+             [:separator ""]
+            ])))
     ))
 
