@@ -44,8 +44,5 @@
 (defn render-tagged-lines [lines]
   (let [tagged-html-lines (rest (reductions reducer [nil nil] lines))
         text-lines (map second tagged-html-lines)]
-    (clojure.string/join "\r\n" text-lines)))
-
-
-
+    (string/join "\r\n" text-lines)))
 

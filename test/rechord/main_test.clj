@@ -50,7 +50,17 @@ Happy birthday to you"
 A     B    A   D  A
 Happy birthday to you" -2 prefer-sharps)))))
 
-
+;; rechord-html
+(deftest rechord-html-birthday-song
+  (testing "rechord-html birthday song"
+    (is (=
+"<h1>A birthday song</h1>\r
+<span class='chord'>G     A    G   C  G</span><br/>\r
+<span class='lyric'>Happy birthday to you</span><br/>"
+           (rechord-html
+"A birthday song
+A     B    A   D  A
+Happy birthday to you" -2 prefer-sharps)))))
 
 
 

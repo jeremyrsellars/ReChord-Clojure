@@ -8,7 +8,7 @@
                  [org.clojure/clojurescript "0.0-1934"]]
   :source-paths ["src"],
   :cljsbuild {
-    :crossovers [rechord.core rechord.linereader rechord.main],
+    :crossovers [rechord.core rechord.linereader rechord.htmlrenderer rechord.main],
     :builds [{
       :source-paths ["src" "target/cljsbuild-crossover"],
       :crossover-path "src/rechord",
