@@ -174,6 +174,8 @@
            (transpose-width "AMaj7" -1 prefer-sharps)))
     (is (= "AbMaj7"
            (transpose-width "AMaj7" -1 prefer-flats)))
+    (is (= "Absus4"
+           (transpose-width "Asus4" -1 prefer-flats)))
     (is (= "Am7 "
            (transpose-width "F#m7" 3 prefer-flats)))
     ))
@@ -223,4 +225,5 @@
 
 
 
-
+
+

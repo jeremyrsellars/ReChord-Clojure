@@ -74,6 +74,7 @@
 (defn replace-chords [line offset note-selector]
   (clojure.string/replace
      line
-     #"[A-G][b#]?(Maj|MAJ|maj|min|m|M|[0-9])*\s*"
+     #"[A-G][b#]?(?i)(maj|min|m|sus|[0-9])*\s*"
      #(transpose-width (first %) offset note-selector)))
-
+
+
