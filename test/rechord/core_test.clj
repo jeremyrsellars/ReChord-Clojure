@@ -147,6 +147,38 @@
            (transpose "F#m7" 3 prefer-flats)))))
 
 
+;; transpose-width
+(deftest transpose-width-tests
+  (testing "transpose-width"
+    (is (= "Am7"
+           (transpose-width "Am7" 0 prefer-flats)))
+    (is (= "Am7 "
+           (transpose-width "Am7 " 0 prefer-flats)))
+    (is (= "Am7 "
+           (transpose-width "F#m7" 3 prefer-flats)))
+    (is (= "F#m7"
+           (transpose-width "Am7" -3 prefer-sharps)))
+    (is (= "F#m7"
+           (transpose-width "Am7 " -3 prefer-sharps)))
+    (is (= "A"
+           (transpose-width "A" 0 prefer-sharps)))
+    (is (= "A#"
+           (transpose-width "A" 1 prefer-sharps)))
+    (is (= "Bb"
+           (transpose-width "A" 1 prefer-flats)))
+    (is (= "A#m"
+           (transpose-width "Am" 1 prefer-sharps)))
+    (is (= "GMaj7 "
+           (transpose-width "AbMaj7" -1 prefer-sharps)))
+    (is (= "G#Maj7"
+           (transpose-width "AMaj7" -1 prefer-sharps)))
+    (is (= "AbMaj7"
+           (transpose-width "AMaj7" -1 prefer-flats)))
+    (is (= "Am7 "
+           (transpose-width "F#m7" 3 prefer-flats)))
+    ))
+
+
 ;; replace-chords
 (deftest replace-chords-empty-0-sharps
   (testing "empty is empty"
@@ -180,11 +212,15 @@
 
 (deftest replace-chords-_A_-4-sharps
   (testing "' Am ' + 4 is ' C#m '"
-    (is (= " C#m "
+    (is (= " C#m"
            (replace-chords " Am " 4 prefer-sharps)))))
 
 (deftest replace-chords-_A_-4-flats
   (testing "' Am ' + 4 is ' Dbm '"
-    (is (= " Dbm "
+    (is (= " Dbm"
            (replace-chords " Am " 4 prefer-flats)))))
+
+
+
+
 

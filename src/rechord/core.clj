@@ -59,9 +59,21 @@
         tnote (note-selector tnotes)]
     (clojure.string/join [tnote mods])))
 
+(defn transpose-width [chord-ws offset note-selector]
+  (let [parts (rest (re-matches #"^([A-G][b#]?)(\S*)(\s*)" chord-ws))
+        note (first parts)
+        mods (second parts)
+        orig-ws (nth parts 2)
+        tnotes (transpose-note note offset)
+        tnote (note-selector tnotes)
+        ws-length (max 0 (+ (count orig-ws) (count note) (- (count tnote))))
+        ws (apply str (repeat ws-length " "))
+        ]
+    (clojure.string/join [tnote mods ws])))
+
 (defn replace-chords [line offset note-selector]
   (clojure.string/replace
      line
-     #"[A-G][b#]?(Maj|MAJ|maj|min|m|M|[0-9])*"
-     #(transpose (first %) offset note-selector)))
+     #"[A-G][b#]?(Maj|MAJ|maj|min|m|M|[0-9])*\s*"
+     #(transpose-width (first %) offset note-selector)))
 
