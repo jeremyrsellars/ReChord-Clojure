@@ -13,7 +13,7 @@
       :source-paths ["src" "target/cljsbuild-crossover"],
       :crossover-path "src/rechord",
       :compiler {
-        :output-to "resources/public/rechord.js"
+        :output-to "resources/public/index.js"
         :optimizations :simple
         :pretty-print true
         :target :nodejs

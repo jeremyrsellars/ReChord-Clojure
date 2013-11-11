@@ -1,0 +1,25 @@
+{
+  "name": "rechord",
+  "version": "0.0.0",
+  "description": "Transpose the chords on a lead sheet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeremyrsellars/ReChord-Clojure.git"
+  },
+  "keywords": [
+    "chord",
+    "transpose",
+    "lead",
+    "sheet",
+    "guitar"
+  ],
+  "author": "Jeremy Sellars",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/jeremyrsellars/ReChord-Clojure/issues"
+  }
+}
