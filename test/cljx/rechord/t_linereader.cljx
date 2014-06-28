@@ -1,6 +1,8 @@
 (ns rechord.t-linereader
-  (:require [clojure.test :refer :all]
-            [rechord.linereader :refer :all]))
+  (#+clj :require #+cljs :require-macros
+         [#+clj clojure.test #+cljs cemerick.cljs.test :refer (is deftest with-test run-tests testing)])
+  (:require #+cljs [cemerick.cljs.test :as t]
+            [rechord.linereader :refer [get-line-type get-tagged-lines]]))
 
 ;; get-line-type
 (deftest empty-is-separator

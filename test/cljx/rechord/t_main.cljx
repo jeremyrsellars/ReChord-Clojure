@@ -1,19 +1,21 @@
 (ns rechord.t-main
-  (:require [clojure.test :refer :all]
-            [rechord.core :refer :all]
-            [rechord.main :refer :all]))
+  (#+clj :require #+cljs :require-macros
+         [#+clj clojure.test #+cljs cemerick.cljs.test :refer (is deftest with-test run-tests testing)])
+  (:require #+cljs [cemerick.cljs.test :as t]
+            [rechord.core :refer [prefer-flats prefer-sharps]]
+            [rechord.main :as main]))
 
 ;; rechord-tagged-line
 (deftest rechord-tagged-line-test
   (testing "rechord-tagged-line"
     (is (= :x
-           (rechord-tagged-line [:separator :x] -1 prefer-flats)))
+           (main/rechord-tagged-line [:separator :x] -1 prefer-flats)))
     (is (= :y
-           (rechord-tagged-line [:lyric :y] -1 prefer-flats)))
+           (main/rechord-tagged-line [:lyric :y] -1 prefer-flats)))
     (is (= :x
-           (rechord-tagged-line [:other :x] -1 prefer-flats)))
+           (main/rechord-tagged-line [:other :x] -1 prefer-flats)))
     (is (= "AbBbB"
-           (rechord-tagged-line [:chord "A B C"] -1 prefer-flats)))))
+           (main/rechord-tagged-line [:chord "A B C"] -1 prefer-flats)))))
 
 
 ;; rechord
@@ -23,7 +25,7 @@
             ""
             "G     A    G   C  G"
             "Happy birthday to you"]
-           (rechord-tagged-lines [
+           (main/rechord-tagged-lines [
              [:lyric     "A birthday song"]
              [:separator ""]
              [:chord     "A     B    A   D  A"]
@@ -36,7 +38,7 @@
 "A birthday song
 G     A    G   C  G
 Happy birthday to you"
-           (rechord
+           (main/rechord
 "A birthday song
 A     B    A   D  A
 Happy birthday to you" -2 prefer-sharps)))))
@@ -48,7 +50,7 @@ Happy birthday to you" -2 prefer-sharps)))))
 "<h1>A birthday song</h1>\r
 <span class='chord'>G     A    G   C  G</span><br/>\r
 <span class='lyric'>Happy birthday to you</span><br/>"
-           (rechord-html
+           (main/rechord-html
 "A birthday song
 A     B    A   D  A
 Happy birthday to you" -2 prefer-sharps)))))

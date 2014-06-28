@@ -1,7 +1,8 @@
 (ns rechord.t-htmlrenderer
-  (:require [clojure.test :refer :all]
-            [rechord.core :refer :all]
-            [rechord.htmlrenderer :refer :all]))
+  (#+clj :require #+cljs :require-macros
+         [#+clj clojure.test #+cljs cemerick.cljs.test :refer (is deftest with-test run-tests testing)])
+  (:require #+cljs [cemerick.cljs.test :as t]
+            [rechord.htmlrenderer :refer [render-tagged-lines]]))
 
 ;; render-tagged-lines
 (deftest render-tagged-lines-test
