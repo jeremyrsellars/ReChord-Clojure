@@ -1,4 +1,4 @@
-(ns rechord.t_htmlrenderer
+(ns rechord.t-htmlrenderer
   (:require [clojure.test :refer :all]
             [rechord.core :refer :all]
             [rechord.htmlrenderer :refer :all]))

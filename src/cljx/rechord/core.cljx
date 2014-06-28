@@ -1,4 +1,5 @@
-(ns rechord.core)
+(ns rechord.core
+  (:require [clojure.string :as string]))
 
 (def prefer-sharps first)
 (def prefer-flats last)
@@ -57,7 +58,7 @@
         mods (second parts)
         tnotes (transpose-note note offset)
         tnote (note-selector tnotes)]
-    (clojure.string/join [tnote mods])))
+    (string/join [tnote mods])))
 
 (defn transpose-width [chord-ws offset note-selector]
   (let [parts (rest (re-matches #"^([A-G][b#]?)(\S*)(\s*)" chord-ws))
@@ -69,10 +70,10 @@
         ws-length (max 0 (+ (count orig-ws) (count note) (- (count tnote))))
         ws (apply str (repeat ws-length " "))
         ]
-    (clojure.string/join [tnote mods ws])))
+    (string/join [tnote mods ws])))
 
 (defn replace-chords [line offset note-selector]
-  (clojure.string/replace
+  (string/replace
      line
      #"[A-G][b#]?(?:[Mm][Aa][Jj]|[Mm][Ii][Nn]|[Mm]|[Ss][Uu][Ss]|[0-9])*\s*"
      #(transpose-width % offset note-selector)))

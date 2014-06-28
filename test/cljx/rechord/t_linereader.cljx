@@ -1,4 +1,4 @@
-(ns rechord.t_linereader
+(ns rechord.t-linereader
   (:require [clojure.test :refer :all]
             [rechord.linereader :refer :all]))
 

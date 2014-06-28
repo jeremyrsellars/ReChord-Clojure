@@ -1,4 +1,4 @@
-(ns rechord.t_core
+(ns rechord.t-core
   (:require [clojure.test :refer :all]
             [rechord.core :refer :all]))
 
