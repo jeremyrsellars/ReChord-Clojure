@@ -38,8 +38,8 @@
                                          :compiler {:output-to "target/cljs/testable.js"
                                                     :optimizations :advanced ; required to run tests on NodeJS
                                                     :pretty-print true}}]
-                               :test-commands {"tests-phantom" ["phantomjs" :runner      "target/cljs/testable.js"]
-                                               "tests-slimer"  ["slimerjs"  :runner      "target/cljs/testable.js"]
+                               :test-commands {"tests-phantom" ["phantomjs.cmd" :runner      "target/cljs/testable.js"]
+                                               "tests-slimer"  ["slimerjs.cmd"  :runner      "target/cljs/testable.js"]
                                                "tests-nodejs"  ["node"      :node-runner "target/cljs/testable.js"]}}}
              :1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
              :1.5 {:dependencies [[org.clojure/clojure "1.5.1"]]}

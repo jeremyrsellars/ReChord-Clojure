@@ -29,8 +29,8 @@
 ;; get-tagged-lines
 (deftest empty-is-one-separator
   (testing "empty is [:separator]"
-    (is (= [[:separator ""]]
-           (get-tagged-lines "")
+    (is (= [[:separator ""] [:chord "A B C"]]
+           (get-tagged-lines "\nA B C")
          ))))
 (deftest birthday-song
   (testing "empty is [:separator]"
