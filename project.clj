@@ -71,6 +71,7 @@
             "test1.5" [:ccljx :1.5]
             "testdev" [:ccljx :1.6 :2234]
             "testjvm" [:ccljx :clj-all]
+            "testjvmjs" [:ccljx :clj-all :cljs-all]
             "testclr" [:clr-1.5]
             "clr"     [:clr-1.4]
             "testjs"  [:ccljx :cljs-all]
