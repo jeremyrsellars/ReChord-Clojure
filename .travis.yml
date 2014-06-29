@@ -1,2 +1,3 @@
 language: clojure
-script: lein cascade testjvmjs
+lein: lein2
+script: lein2 cascade testjvmjs
