@@ -4,27 +4,30 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :plugins [[com.keminglabs/cljx "0.4.0"]
-            [lein-clr     "0.2.1"]
-            [lein-cascade "0.1.2"]]
-  :clr {:cmd-templates {:clj-url "http://sourceforge.net/projects/clojureclr/files/clojure-clr-1.4.1-Debug-4.0.zip/download"
-                        :clj-zip "clojure-clr-1.4.1-Debug-4.0.zip"
-                        :clj-dep [[?PATH "mono"] ["target/clr/clj/Debug 4.0" %1]]
-                        ;; :clj-exe is defined in 1.4 and 1.5 profiles
-                        :wget    ["wget" "--no-check-certificate" "--no-clobber" "-O" %1 %2]
-                        :unzip   ["unzip" "-d" %1 %2]}
-        :deps-cmds [;[:wget  :clj-zip :clj-url]
-                    ;[:unzip "../clj" :clj-zip]
-                    ]
-        :main-cmd    [:clj-exe "Clojure.Main.exe"]
-        :compile-cmd [:clj-exe "Clojure.Compile.exe"]}
-  :cljx {:builds [{:source-paths ["src/cljx"]  :output-path "target/generated/clj"       :rules :clj}
-                  {:source-paths ["test/cljx"] :output-path "target/generated/test-clj"  :rules :clj}
-                  {:source-paths ["src/cljx"]  :output-path "target/generated/cljs"      :rules :cljs}
-                  {:source-paths ["test/cljx"] :output-path "target/generated/test-cljs" :rules :cljs}]}
-  :source-paths ["src"  "target/generated/clj" "resources"]
+  ; :plugins [[com.keminglabs/cljx "0.4.0"]
+  ;           [lein-clr     "0.2.1"]
+  ;           [lein-cascade "0.1.2"]]
+  ; :clr {:cmd-templates {:clj-url "http://sourceforge.net/projects/clojureclr/files/clojure-clr-1.4.1-Debug-4.0.zip/download"
+  ;                       :clj-zip "clojure-clr-1.4.1-Debug-4.0.zip"
+  ;                       :clj-dep [[?PATH "mono"] ["target/clr/clj/Debug 4.0" %1]]
+  ;                       ;; :clj-exe is defined in 1.4 and 1.5 profiles
+  ;                       :wget    ["wget" "--no-check-certificate" "--no-clobber" "-O" %1 %2]
+  ;                       :unzip   ["unzip" "-d" %1 %2]}
+  ;       :deps-cmds [;[:wget  :clj-zip :clj-url]
+  ;                   ;[:unzip "../clj" :clj-zip]
+  ;                   ]
+  ;       :main-cmd    [:clj-exe "Clojure.Main.exe"]
+  ;       :compile-cmd [:clj-exe "Clojure.Compile.exe"]}
+  ; :cljx {:builds [{:source-paths ["src/cljx"]  :output-path "target/generated/clj"       :rules :clj}
+  ;                 {:source-paths ["test/cljx"] :output-path "target/generated/test-clj"  :rules :clj}
+  ;                 {:source-paths ["src/cljx"]  :output-path "target/generated/cljs"      :rules :cljs}
+  ;                 {:source-paths ["test/cljx"] :output-path "target/generated/test-cljs" :rules :cljs}]}
+  :source-paths ["src/cljx"  #_"target/generated/clj" "resources"]
   :test-paths   ["test" "target/generated/test-clj"]
-  :profiles {:2197 {:dependencies [[org.clojure/clojurescript "0.0-2197"]]}
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.1"]
+                                  [org.apache.pdfbox/pdfbox "2.0.21"]]}
+
+             :2197 {:dependencies [[org.clojure/clojurescript "0.0-2197"]]}
              :2199 {:dependencies [[org.clojure/clojurescript "0.0-2199"]]}
              :2202 {:dependencies [[org.clojure/clojurescript "0.0-2202"]]}
              :2227 {:dependencies [[org.clojure/clojurescript "0.0-2227"]]}
@@ -51,6 +54,7 @@
              :clr-1.5 {:clr {:cmd-templates {:clj-exe [[?PATH "mono"] [CLJCLR15_40 %1]]}}
                        :test-paths ["test-clj"]}
              :pkg {:source-paths ["target/generated/cljs"]}}
+  #_#_
   :cascade {:clean [["clean"]]
             :cljx  [["cljx" "once"]]
             :ccljx [:clean :cljx]
